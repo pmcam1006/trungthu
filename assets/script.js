@@ -366,7 +366,7 @@ const wishList = [
     img: "./assets/3.png",
   },
   {
-    text: "Mong cho mỗi ngày của Người Đẹp đều ngọt ngào như bánh Trung Thu, và lúc nào cũng ngập tràn niềm vui, nụ cười an yên như thế này.",
+    text: "Ước sao mỗi mùa trăng đi qua đều đọng lại trong em những kỷ niệm đẹp. Chúc em có một đêm Trung Thu thật ngọt ngào và vạn sự như ý!",
     img: "./assets/4.png",
   },
   {
