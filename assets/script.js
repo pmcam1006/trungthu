@@ -354,32 +354,24 @@ const interactiveObjects = [];
 
 const wishList = [
   {
-    text: "Chúc cậu và gia đình một mùa Trung Thu đoàn viên, tràn ngập niềm vui và hạnh phúc!",
-    img: "./assets/1.jpg",
+    text: "Chúc cho Người Đẹp trong ảnh có một mùa Trung Thu thật bình yên và ngập tràn hạnh phúc. Mong em mỗi ngày đều nở nụ cười rạng rỡ như ánh trăng Rằm.",
+    img: "./assets/1.png",
   },
   {
-    text: "Cầu chúc cho mọi nguyện ước của cậu đêm nay sẽ trở thành hiện thực.",
-    img: "./assets/2.jpg",
+    text: "Gửi cô gái xinh đẹp nhất tấm hình này chút dịu dàng mùa trăng. Chúc em luôn biết thương yêu bản thân và bớt suy tư lo âu lại nhé.",
+    img: "./assets/2.png",
   },
   {
-    text: "Trăng tròn ấm áp, chúc tình cậu và tình yêu của chúng ta mãi bền chặt.",
-    img: "./assets/3.jpg",
+    text: "Trăng trên trời dù tròn hay khuyết thì em trong ảnh vẫn luôn là dịu dàng nhất. Chúc em một mùa Trung Thu ấm áp và luôn gặp nhiều may mắn!",
+    img: "./assets/3.png",
   },
   {
-    text: "Chúc cậu luôn giữ được tâm hồn trong trẻo, yêu đời như ánh trăng rằm.",
-    img: "./assets/1.jpg",
+    text: "Mong cho mỗi ngày của Người Đẹp đều ngọt ngào như bánh Trung Thu, và lúc nào cũng ngập tràn niềm vui, nụ cười an yên như thế này.",
+    img: "./assets/4.png",
   },
   {
-    text: "Trung Thu bình an, vạn sự như ý, công danh thăng tiến rực rỡ!",
-    img: "./assets/2.jpg",
-  },
-  {
-    text: "Chúc riêng cậu một đêm trăng thật lãng mạn và ngọt ngào.",
-    img: "./assets/3.jpg",
-  },
-  {
-    text: "Sức khỏe dồi dào, tâm an yên, miệng luôn mỉm cười rạng rỡ.",
-    img: "./assets/1.jpg",
+    text: "Mong rằng giữa thế giới rộng lớn này, em sẽ luôn tìm thấy những khoảng trời nhỏ bình yên, để tâm hồn lúc nào cũng nhẹ nhàng và an nhiên như bức ảnh này.",
+    img: "./assets/5.png",
   },
 ];
 
@@ -778,4 +770,22 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(
     Math.min(window.devicePixelRatio, width < 768 ? 1.5 : 2),
   );
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("letter-modal");
+  const closeBtn = document.getElementById("close-letter-btn");
+  const closeXBtn = document.getElementById("close-x-btn");
+
+  function hideModal() {
+    modal.style.display = "none";
+
+    // Phát nhạc nền khi đóng bức thư
+    const bgMusic = document.getElementById("bg-music");
+    if (bgMusic) {
+      bgMusic.play().catch((err) => console.log("Autoplay blocked:", err));
+    }
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", hideModal);
+  if (closeXBtn) closeXBtn.addEventListener("click", hideModal);
 });

@@ -25,6 +25,7 @@ html {
   z-index: 1;
 }
 
+/* --- THANH ĐIỀU HƯỚNG TỚI --- */
 .top-bar {
   position: absolute;
   top: 20px;
@@ -57,13 +58,14 @@ html {
   background: rgba(255, 215, 0, 0.3);
 }
 
+/* --- MODAL THÔNG ĐIỆP (KHI BẤM VÀO LỒNG ĐÈN) --- */
 .wish-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 100;
@@ -93,7 +95,7 @@ html {
     inset 0 0 15px rgba(255, 215, 0, 0.2);
   border-radius: 24px;
   padding: 28px 20px 24px 20px;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
   text-align: center;
   position: relative;
@@ -142,22 +144,28 @@ html {
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
 }
 
+/* KHUNG CHỨA ẢNH - CHỈNH SỬA ĐỂ HIỂN THỊ FULL ẢNH CỦA EM ẤY */
 .wish-image-container {
   width: 100%;
-  height: 180px;
+  max-height: 360px; /* Độ cao cho phép ảnh dọc hiển thị trọn vẹn */
   border-radius: 14px;
   overflow: hidden;
   margin: 12px 0 16px 0;
   border: 1px solid rgba(255, 215, 0, 0.4);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  background: #000;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wish-image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-height: 360px;
+  object-fit: contain; /* HIỂN THỊ TRỌN VẸN FULL ẢNH KHÔNG BỊ XÉN HEAD/FOOT */
   display: block;
+  border-radius: 12px;
 }
 
 .wish-card p {
@@ -175,13 +183,14 @@ html {
   letter-spacing: 2px;
 }
 
+/* --- DÒNG CHỮ HƯỚNG DẪN BẤM LỒNG ĐÈN --- */
 .click-hint {
   position: absolute;
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-  color: rgba(255, 235, 205, 0.75);
+  color: rgba(255, 235, 205, 0.85);
   font-size: 13px;
   letter-spacing: 1px;
   pointer-events: none;
@@ -198,4 +207,134 @@ html {
   100% {
     opacity: 0.95;
   }
+}
+
+/* --- MODAL BỨC THƯ TRUNG THU (HIỆN KHI MỚI VÀO TRANG) --- */
+.letter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.letter-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  border: 1.5px solid #ffd700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  background: url("assets/trungthubg.jpg") center/cover no-repeat;
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Custom thanh cuộn nhẹ nhàng bên trong thư */
+.letter-card::-webkit-scrollbar {
+  width: 4px;
+}
+.letter-card::-webkit-scrollbar-thumb {
+  background: #ffd700;
+  border-radius: 4px;
+}
+
+.letter-content {
+  background: rgba(10, 5, 20, 0.7); /* Phủ tối vừa đủ giúp chữ sáng rõ */
+  padding: 32px 22px 24px;
+  text-align: center;
+  border-radius: 18px;
+}
+
+.close-x-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-x-btn:hover {
+  background: #ffd700;
+  color: #000;
+  transform: rotate(90deg);
+}
+
+.letter-date {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #f0f0f0;
+}
+
+.letter-title {
+  font-family: "Dancing Script", cursive, sans-serif;
+  font-size: 2rem;
+  margin: 8px 0 16px;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.letter-body p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.letter-quote {
+  font-style: italic;
+  color: #ffeb3b !important;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.letter-footer {
+  margin-top: 20px;
+}
+
+.letter-btn {
+  background: linear-gradient(135deg, #ff8c00, #ff4500);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.7);
+  transition: transform 0.2s;
+}
+
+.letter-btn:hover {
+  transform: scale(1.05);
+}
+
+.sub-footer {
+  margin-top: 12px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #ffca28;
 }

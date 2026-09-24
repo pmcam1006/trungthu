@@ -1,46 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Trung Thu 3D</title>
 
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css.css">
-</head>
-<body>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css.css" />
+  </head>
+  <body>
     <div id="webgl-container"></div>
 
     <div class="top-bar">
-        <button class="icon-btn" id="audio-btn" title="Bật/Tắt Nhạc"><i class="fas fa-music"></i></button>
-        <button class="icon-btn" id="reset-cam-btn" title="Góc nhìn ban đầu"><i class="fas fa-compress-arrows-alt"></i></button>
+      <button class="icon-btn" id="audio-btn" title="Bật/Tắt Nhạc">
+        <i class="fas fa-music"></i>
+      </button>
+      <button class="icon-btn" id="reset-cam-btn" title="Góc nhìn ban đầu">
+        <i class="fas fa-compress-arrows-alt"></i>
+      </button>
     </div>
 
-    <div class="click-hint">Chạm vào lồng đèn nhé</div>
+    <div class="click-hint">Chạm vào lồng đèn em nhé</div>
 
+    <!-- Modal Thông Điệp (Khi bấm vào lồng đèn) -->
     <div class="wish-modal" id="wishModal">
-        <div class="wish-card">
-            <button class="close-btn" id="closeWishBtn" aria-label="Đóng"><i class="fas fa-times"></i></button>
-            <h3 id="wishTitle">Thông Điệp Gửi Cậu</h3>
-            
-            <div class="wish-image-container">
-                <img id="wishImage" src="" alt="Hình ảnh Trung Thu">
-            </div>
-
-            <p id="wishText">"Chúc cậu một đêm Trung Thu ấm áp, bình an và trọn vẹn bên những người thương yêu."</p>
-            <div class="tag">✦ Trung Thu An Lành ✦</div>
+      <div class="wish-card">
+        <button class="close-btn" id="closeWishBtn" aria-label="Đóng">
+          <i class="fas fa-times"></i>
+        </button>
+        <h3 id="wishTitle">Thông Điệp Gửi Em</h3>
+        <div class="wish-image-container">
+          <img id="wishImage" src="assets/1.png" alt="Hình ảnh Trung Thu" />
         </div>
+        <p id="wishText">
+          "Chúc cho Người Đẹp trong ảnh có một mùa Trung Thu thật bình yên và
+          ngập tràn hạnh phúc..."
+        </p>
+        <div class="tag">✦ TRUNG THU AN LÀNH ✦</div>
+      </div>
+    </div>
+
+    <!-- Popup Bức Thư Trung Thu (Hiện ra lúc vừa vào trang) -->
+    <div id="letter-modal" class="letter-modal">
+      <div class="letter-card">
+        <button id="close-x-btn" class="close-x-btn">&times;</button>
+
+        <div class="letter-content">
+          <div class="letter-header">
+            <span class="letter-date">| 25-09-2025 |</span>
+            <h2 class="letter-title">Gửi Người Đẹp dưới ánh trăng Rằm</h2>
+          </div>
+
+          <div class="letter-body">
+            <p>
+              Mong cho Trung Thu năm nay mang đến cho em thật nhiều tiếng cười,
+              sự ấm áp và bình yên bên những người thân yêu nhất.
+            </p>
+            <p>
+              Chúc em từ nay về sau biết thương mình nhiều hơn. Mong em ngủ thật
+              ngon mỗi tối, bớt suy tư lo âu, và để những giọt nước mắt nhường
+              chỗ cho những nụ cười rạng rỡ.
+            </p>
+            <p>
+              Đừng cố gượng ép bản thân phải luôn mạnh mẽ. Những lúc thấy lòng
+              yếu đuối hay mệt mỏi, hãy cho phép mình tựa vào một khoảng lặng để
+              nghỉ ngơi nhé. <i>(Tựa vào anh thì càng tốt hơn 😆)</i>
+            </p>
+            <p class="letter-quote">
+              “Trăng tròn rồi khuyết, người cũng có lúc vui, lúc buồn miễn là
+              sau cùng ta vẫn mỉm cười..”
+            </p>
+          </div>
+
+          <div class="letter-footer">
+            <button id="close-letter-btn" class="letter-btn">
+              Mở Quà Trung Thu 🌕
+            </button>
+            <div class="sub-footer">✦ TRUNG THU AN LÀNH ✦</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <audio id="bgm" loop src="./assets/1.mp3"></audio>
-    
-    
+
     <!-- Three.js & OrbitControls -->
     <script src="./assets/three.min.js"></script>
     <script src="./assets/OrbitControls.js"></script>
     <script src="./assets/script.js"></script>
-</body>
+  </body>
 </html>
